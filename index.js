@@ -23,7 +23,11 @@ const app = express();
 const port = 3000;
 
 // Habilitar CORS
-app.use(cors());
+app.use(cors({
+  origin: ['https://derma-ia-front.vercel.app'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 
 // Configuración de AWS S3
 const s3 = new aws.S3({
@@ -103,4 +107,4 @@ app.use((err, req, res, next) => {
 // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
-}); 
+});
